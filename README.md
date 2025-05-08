@@ -69,35 +69,35 @@ pip install azureml-sdk
 ## 🔍 Deployment Workflow
 The deploy.py script automates the deployment process:
 
--Workspace Connection: Connects to the AzureML workspace using config.json.
+- **Workspace Connection**: Connects to the AzureML workspace using config.json.
 
--Environment Creation: Builds an environment from conda_dependencies.yml.
+- **Environment Creation**: Builds an environment from conda_dependencies.yml.
 
--Model Registration: Registers each .h5 model in the MLmodels directory.
+- **Model Registration**: Registers each .h5 model in the MLmodels directory.
 
--Service Deployment: Deploys each model as a web service on ACI with 1 CPU core and 1 GB memory.
+- **Service Deployment**: Deploys each model as a web service on ACI with 1 CPU core and 1 GB memory.
 
--Output: Prints the scoring URI for each deployed service.
+- **Output**: Prints the scoring URI for each deployed service.
 
-To run the deployment:
+## To run the deployment:
 
 python deploy.py
 
 ## 🔍 Scoring Script
 The score.py script runs within the deployed web service:
 
-Initialization (init): Loads the .h5 model from the AZUREML_MODEL_DIR environment variable.
+**Initialization (init)**: Loads the .h5 model from the AZUREML_MODEL_DIR environment variable.
 
-Inference (run): Processes JSON input with a data field, expecting an array of shape (n, 50, 1). Reshapes input if necessary and returns predictions as JSON.
+**Inference (run)**: Processes JSON input with a data field, expecting an array of shape (n, 50, 1). Reshapes input if necessary and returns predictions as JSON.
 
-Error Handling: Returns error messages for invalid inputs or exceptions.
+**Error Handling**: Returns error messages for invalid inputs or exceptions.
 
 ## Expected Input Format:
 {
   "data": [[...], [...], ...]  // Array of shape (n, 50) or (n, 50, 1)
 }
 
-Output Format:
+**Output Format:**
 {
   "predictions": [[...], [...], ...]  // Model predictions
 }
