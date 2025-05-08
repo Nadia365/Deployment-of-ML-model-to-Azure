@@ -5,15 +5,12 @@
 ---
 
 ## 📌 Table of Contents  
-- [Overview](#-overview)  
-- [Prerequisites](#-prerequisites)  
-- [Repository Structure](#-repository-structure)  
-- [Setup & Deployment](#-setup--deployment)  
-- [Scoring Script](#-scoring-script)  
-- [Environment Configuration](#-environment-configuration)  
-- [Usage](#-usage)  
-- [Troubleshooting](#-troubleshooting)  
-- [License](#-license)  
+- [Overview]
+- [Prerequisites]
+- [Repository Structure]
+- [Setup & Deployment]
+- [Scoring Script]
+- [Environment Configuration]
 
 ---
 
@@ -36,11 +33,17 @@ Automates:
 ---
 
 ## Repository Structure
-├── MLmodels/                # Directory containing .h5 model files
-├── conda_dependencies.yml   # Conda environment specification
-├── deploy.py                # Deployment script for AzureML
+
+├── MLmodels/                 # Directory containing .h5 model files
+
+├── conda_dependencies.yml    # Conda environment specification
+
+├── deploy.py                 # Deployment script for AzureML
+
 ├── score.py                 # Scoring script for inference
+
 ├── config.json              # AzureML workspace configuration (not included)
+
 └── README.md                # This file
 
 ## Workflow 
