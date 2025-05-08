@@ -34,17 +34,17 @@ Automates:
 
 ## Repository Structure
 
-├── MLmodels/                 # Directory containing .h5 model files
+├── MLmodels/                       # Directory containing .h5 model files
+ 
+├── conda_dependencies.yml         # Conda environment specification
 
-├── conda_dependencies.yml    # Conda environment specification
+├── deploy.py                      # Deployment script for AzureML
 
-├── deploy.py                 # Deployment script for AzureML
+├── score.py                       # Scoring script for inference
 
-├── score.py                 # Scoring script for inference
+├── config.json                   # AzureML workspace configuration (not included)
 
-├── config.json              # AzureML workspace configuration (not included)
-
-└── README.md                # This file
+└── README.md               
 
 ## Workflow 
 
@@ -52,13 +52,15 @@ Automates:
 ### 1. Set Up AzureML Workspace:
 
 * Create an AzureML workspace in the Azure portal.
+  
 * Download the config.json file from the workspace and place it in the repository root.
 
 
 ### 2. Prepare Models:
 
-Place your Keras model files (.h5 format) in the MLmodels directory.
-Ensure models are compatible with TensorFlow 2.15.0.
+* Place your Keras model files (.h5 format) in the MLmodels directory.
+
+* Ensure models are compatible with TensorFlow 2.15.0.
 
 
 ### 3. Install AzureML SDK (local machine):
@@ -68,19 +70,26 @@ pip install azureml-sdk
 The deploy.py script automates the deployment process:
 
 -Workspace Connection: Connects to the AzureML workspace using config.json.
+
 -Environment Creation: Builds an environment from conda_dependencies.yml.
+
 -Model Registration: Registers each .h5 model in the MLmodels directory.
+
 -Service Deployment: Deploys each model as a web service on ACI with 1 CPU core and 1 GB memory.
+
 -Output: Prints the scoring URI for each deployed service.
 
 To run the deployment:
+
 python deploy.py
 
 ## 🔍 Scoring Script
 The score.py script runs within the deployed web service:
 
 Initialization (init): Loads the .h5 model from the AZUREML_MODEL_DIR environment variable.
+
 Inference (run): Processes JSON input with a data field, expecting an array of shape (n, 50, 1). Reshapes input if necessary and returns predictions as JSON.
+
 Error Handling: Returns error messages for invalid inputs or exceptions.
 
 ## Expected Input Format:
@@ -117,7 +126,9 @@ The conda_dependencies.yml file defines the environment:
 
 ## 🛠️ Key Dependencies:
 -TensorFlow 2.15.0 for model loading and inference.
+
 -Flask and Werkzeug for the web service.
+
 -AzureML defaults for integration with AzureML.
 
 
