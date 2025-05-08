@@ -86,11 +86,11 @@ python deploy.py
 ## 🔍 Scoring Script
 The score.py script runs within the deployed web service:
 
-**Initialization (init)**: Loads the .h5 model from the AZUREML_MODEL_DIR environment variable.
+- **Initialization (init)**: Loads the .h5 model from the AZUREML_MODEL_DIR environment variable.
 
-**Inference (run)**: Processes JSON input with a data field, expecting an array of shape (n, 50, 1). Reshapes input if necessary and returns predictions as JSON.
+- **Inference (run)**: Processes JSON input with a data field, expecting an array of shape (n, 50, 1). Reshapes input if necessary and returns predictions as JSON.
 
-**Error Handling**: Returns error messages for invalid inputs or exceptions.
+- **Error Handling**: Returns error messages for invalid inputs or exceptions.
 
 ## Expected Input Format:
 {
